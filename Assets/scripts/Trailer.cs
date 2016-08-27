@@ -8,6 +8,8 @@ public class Trailer : MonoBehaviour
 
     public RailGridController Grid;
 
+
+
     Vector3 _currentWaypoint;
     Vector3 _nextWaypoint;
 
@@ -34,6 +36,8 @@ public class Trailer : MonoBehaviour
 
     private Vector3 GetNextWaypoint()
     {
+        var wp = Grid.railGrid[Mathf.RoundToInt(transform.position.z), Mathf.RoundToInt(transform.position.x)].GetWaypoints();
+
         return new Vector3();
     }
 	
