@@ -48,15 +48,17 @@ public class RailGridController : MonoBehaviour
 
             for (int x = 0; x < gridWidth; x++)
             {
-                Vector2 pos = new Vector2(x * cellSize, y * cellSize);
+                Vector3 pos = new Vector3(x * cellSize,0, y * cellSize);
                 char railChar = line[x];
                 Rail rail = GetRail(railChar, pos);
                 railGrid[y, x] = rail;
-                _waypoints.AddRange(rail.GetWaypoints());
+                if(rail != null)
+                    _waypoints.AddRange(rail.GetWaypoints());
             }
         }
+        WeldRailParts();
 
-        
+
     }
 
     private void WeldRailParts()
@@ -84,7 +86,7 @@ public class RailGridController : MonoBehaviour
         return str.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
     }
 
-    private Rail GetRail(char rail, Vector2 pos)
+    private Rail GetRail(char rail, Vector3 pos)
     {
         /*
          * t = top
@@ -93,23 +95,24 @@ public class RailGridController : MonoBehaviour
          * r = right
          * - = vertical
          * | = horizontal
+         * x = free cell
          */
 
         switch (rail)
         {
             case '-':
-                return ((GameObject) Instantiate( straightNS,pos, Quaternion.identity, transform)).GetComponent<Rail>();
+                return ((GameObject) Instantiate( straightNS, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case '|':
                 return ((GameObject)Instantiate(straightOW, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case 't':
-                return ((GameObject)Instantiate(curveNE, pos, Quaternion.identity, transform)).GetComponent<Rail>(); 
+                return ((GameObject)Instantiate(curveSW, pos, Quaternion.identity, transform)).GetComponent<Rail>(); 
             case 'b':
                 return ((GameObject)Instantiate(curveNW, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case 'l':
                 return ((GameObject)Instantiate(curveSE, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case 'r':
                 return ((GameObject)Instantiate(curveNE, pos, Quaternion.identity, transform)).GetComponent<Rail>();
-            case 'o':
+            case 'x':
                 return null;
             default:
                 throw new InvalidEnumArgumentException();
