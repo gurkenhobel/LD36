@@ -21,9 +21,8 @@ GameObject:
   - 4: {fileID: 4000012192744900}
   - 33: {fileID: 33000014023126934}
   - 23: {fileID: 23000011568114000}
-  - 95: {fileID: 95000011331541172}
   m_Layer: 0
-  m_Name: CurveRight
+  m_Name: CurveNW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +34,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012490817470}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78,20 +77,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012490817470}
   m_Mesh: {fileID: 4300000, guid: 8388ab3f0dd7d9e4f8aa0e8c2f1dba4b, type: 3}
---- !u!95 &95000011331541172
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012490817470}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8388ab3f0dd7d9e4f8aa0e8c2f1dba4b, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

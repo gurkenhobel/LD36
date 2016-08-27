@@ -23,7 +23,7 @@ public class Trailer : MonoBehaviour
     private void CalculatePosition()
     {
         transform.position = Vector3.Lerp(_currentWaypoint, _nextWaypoint, (Time.time - _lastWaypointTime) *  _speed);
-        transform.rotation = Quaternion.LookRotation(_nextWaypoint - _currentWaypoint);
+        transform.rotation = Quaternion.LookRotation(_nextWaypoint - _currentWaypoint, Vector3.up);
 
         if(Vector3.Distance(transform.position, _nextWaypoint) < 0.01)
         {
