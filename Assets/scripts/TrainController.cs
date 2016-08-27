@@ -4,11 +4,20 @@ using System.Collections.Generic;
 
 public class TrainController
 {
-    private List<GameObject> _trains;
+    #region prefabs
+    public Train TrainPrefab;
+    #endregion
+
+    private List<Train> _trains;
 
     public TrainController()
     {
 
     }
 
+    public void SpawnTrain(int x, int y)
+    {
+        var train = MonoBehaviour.Instantiate<Train>(TrainPrefab);
+        _trains.Add(train);
+    }
 }

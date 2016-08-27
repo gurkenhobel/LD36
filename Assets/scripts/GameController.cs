@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
         #region init
         _trainController = new TrainController();
         #endregion
+
+
         if (OnLoadComplete != null)
             OnLoadComplete(this, null);
     }
