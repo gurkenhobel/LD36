@@ -1,25 +1,22 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System;
 
 public class GameController : MonoBehaviour
 {
 
     private TrainController _trainController;
     private RailGridController _railGrid;
-	
-	void Start ()
+
+    void Start()
     {
         #region init
         _trainController = new TrainController();
-        _railGrid = GetComponent<RailGrid>();
+        _railGrid = GetComponent<RailGridController>();
         #endregion
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
-	
-	}
+
+    }
 }
