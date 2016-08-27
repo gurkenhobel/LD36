@@ -5,6 +5,18 @@ public class CameraController : MonoBehaviour {
 
 	private Camera _camera;
 	public float _speed = 15.0f;
+
+	float _fieldOfView;
+
+	float _minFieldOfView = 15f;
+	float _maxFieldOfView = 90f;
+
+	float _sensitivity = 10f;
+
+
+
+
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -31,6 +43,13 @@ public class CameraController : MonoBehaviour {
 			transform.Translate (new Vector3 (0, _speed * Time.deltaTime, 0));
 		}
 	
+		_fieldOfView = Camera.main.fieldOfView;
+
+		_fieldOfView -= Input.GetAxis ("Mouse ScrollWheel") * _sensitivity;
+		_fieldOfView = Mathf.Clamp (_fieldOfView, _minFieldOfView, _maxFieldOfView);
+		Camera.main.fieldOfView = _fieldOfView;
+
+
 	}
 
 	void FixedUpdate()
