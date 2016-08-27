@@ -119,8 +119,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 20
   height: 10
-  straightRail: {fileID: 1000012656756848, guid: 463e5fa25ec32c14eb02915162725f80,
-    type: 2}
+  cellSize: 1
+  straightNS: {fileID: 1000011485491762, guid: 02e31994789e73a4bbde9cb8e3d01319, type: 2}
+  straightOW: {fileID: 1000012641307506, guid: 323a71e7a9fbac448b5c3165aefabaab, type: 2}
   curveLeft: {fileID: 1000010619155886, guid: c7f39348a33575844a132aaee8a28a0f, type: 2}
   curveRight: {fileID: 1000012490817470, guid: 276c6185a4cd5ea43a0fe30fb99268fc, type: 2}
   testLevel: {fileID: 4900000, guid: 221b8f3bd9a820b46afb0d1d65a370f2, type: 3}
@@ -131,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 46377182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.39430836, y: -0.04790378, z: -0.42321247}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []

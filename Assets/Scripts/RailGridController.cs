@@ -10,7 +10,8 @@ public class RailGridController : MonoBehaviour
     public int height = 10;
     public int cellSize = 10;
 
-    public GameObject straightRail;
+    public GameObject straightNS;
+    public GameObject straightOW;
     public GameObject curveLeft;
     public GameObject curveRight;
 
@@ -40,7 +41,6 @@ public class RailGridController : MonoBehaviour
             {
                 Vector2 pos = new Vector2(x * cellSize, y * cellSize);
                 char railChar = line[x];
-                Debug.Log(railChar);
                 Rail rail = GetRail(railChar, pos);
                 railGrid[y, x] = rail;
             }
@@ -57,13 +57,15 @@ public class RailGridController : MonoBehaviour
         switch (rail)
         {
             case '-':
-                return new Rail(transform, straightRail, pos);
+                return new Rail(transform, straightNS, pos);
             case '|':
-                return new Rail(transform, straightRail, pos);
+                return new Rail(transform, straightOW, pos);
             case 'l':
                 return new SwitchRail(transform, curveLeft, pos);
             case 'r':
                 return new SwitchRail(transform, curveRight, pos);
+            case 'o':
+                return null;
             default:
                 throw new InvalidEnumArgumentException();
         }
@@ -80,7 +82,7 @@ public enum RailDirection
 
 public class Rail
 {
-    protected Vector2 position;
+    protected Vector3 position;
     protected RailDirection direction;
     protected GameObject cellObject;
 
