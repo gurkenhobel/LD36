@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -103,9 +104,8 @@ public class Rail
 
     public List<Vector3> GetWaypoints()
     {
-        var waypoints = new List<Vector3>();
-        // TODO get waypoints
-        return waypoints;
+        var waypointTransforms = cellObject.GetComponents<Transform>();
+        return waypointTransforms.Select(waypoint => waypoint.position).ToList();
     }
 }
 
