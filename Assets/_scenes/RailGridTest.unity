@@ -122,10 +122,10 @@ MonoBehaviour:
   cellSize: 1
   straightNS: {fileID: 1000011485491762, guid: 02e31994789e73a4bbde9cb8e3d01319, type: 2}
   straightOW: {fileID: 1000012641307506, guid: 323a71e7a9fbac448b5c3165aefabaab, type: 2}
-  curveNE: {fileID: 0}
-  curveNW: {fileID: 0}
-  curveSE: {fileID: 0}
-  curveSW: {fileID: 0}
+  curveNE: {fileID: 1000010619155886, guid: c7f39348a33575844a132aaee8a28a0f, type: 2}
+  curveNW: {fileID: 1000012490817470, guid: 276c6185a4cd5ea43a0fe30fb99268fc, type: 2}
+  curveSE: {fileID: 1000011886769044, guid: 5a2fea9e5404d46408062061aef66133, type: 2}
+  curveSW: {fileID: 1000014014854684, guid: f1647decab204f140886d7f1170cce21, type: 2}
   testLevel: {fileID: 4900000, guid: 221b8f3bd9a820b46afb0d1d65a370f2, type: 3}
 --- !u!4 &46377184
 Transform:

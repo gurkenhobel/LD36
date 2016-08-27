@@ -55,6 +55,15 @@ public class RailGridController : MonoBehaviour
 
     private Rail GetRail(char rail, Vector2 pos)
     {
+        /*
+         * t = top
+         * b = bottom
+         * l = left
+         * r = right
+         * - = vertical
+         * | = horizontal
+         */
+
         switch (rail)
         {
             case '-':
@@ -63,7 +72,7 @@ public class RailGridController : MonoBehaviour
                 return new Rail(transform, straightOW, pos);
             case 't':
                 return new SwitchRail(transform, curveNE, pos);
-            case 'd':
+            case 'b':
                 return new SwitchRail(transform, curveNW, pos);
             case 'l':
                 return new SwitchRail(transform, curveSE, pos);

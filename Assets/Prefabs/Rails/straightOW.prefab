@@ -22,7 +22,7 @@ GameObject:
   - 33: {fileID: 33000013290582036}
   - 23: {fileID: 23000010667091658}
   m_Layer: 0
-  m_Name: straightOW
+  m_Name: StraightOW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
