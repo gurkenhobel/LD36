@@ -63,8 +63,12 @@ public class RailGridController : MonoBehaviour
                 return new Rail(transform, straightOW, pos);
             case 't':
                 return new SwitchRail(transform, curveNE, pos);
+            case 'd':
+                return new SwitchRail(transform, curveNW, pos);
+            case 'l':
+                return new SwitchRail(transform, curveSE, pos);
             case 'r':
-                return new SwitchRail(transform, curveNE, pos);
+                return new SwitchRail(transform, curveSW, pos);
             case 'o':
                 return null;
             default:
