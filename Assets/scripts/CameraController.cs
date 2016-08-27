@@ -69,7 +69,7 @@ public class CameraController : MonoBehaviour {
 		if (Input.GetMouseButton (0)) 
 		{
 			Vector3 pos = Camera.main.ScreenToViewportPoint (Input.mousePosition) - _panOrigin;
-
+			pos = new Vector3 (pos.x, pos.z, pos.y);
 			transform.position = _oldPos + -pos * _panSpeed;
 		}
 
