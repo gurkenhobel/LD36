@@ -23,11 +23,15 @@ public class CameraController : MonoBehaviour {
 	private float _panSpeed = 20f;
 
 	private Vector3 ResetCamera;
+
+	private Vector3 _anchorPoint;
 	// Use this for initialization
 	void Start ()
 	{
 		_camera = GetComponent<Camera> ();
 		ResetCamera = _camera.transform.position;
+
+		_anchorPoint = GetComponent<Camera>().transform.position;
 	}
 
 	// Update is called once per frame
@@ -56,6 +60,11 @@ public class CameraController : MonoBehaviour {
 		_fieldOfView = Mathf.Clamp (_fieldOfView, _minFieldOfView, _maxFieldOfView);
 		Camera.main.fieldOfView = _fieldOfView;
 
+		if ( Input.GetKeyDown(KeyCode.LeftShift))
+		{
+			_anchorPoint = GetComponent<Camera>().transform.position;
+		}
+
 
 		if (Input.GetMouseButtonDown (0)) 
 		{
@@ -79,21 +88,19 @@ public class CameraController : MonoBehaviour {
 		}
 
 
-
-
-
 	}
 
 	void FixedUpdate()
 	{
-
+		
 	}
 
 	void LateUpdate()
 	{
+		
 		if (Input.GetMouseButtonDown (1)) 
 		{
-			Camera.main.transform.position = ResetCamera;
+			Camera.main.transform.position = _anchorPoint;
 		}
 	}
 
