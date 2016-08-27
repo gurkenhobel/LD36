@@ -17,10 +17,13 @@ public class TrainController
         _trains = new List<Train>();
     }
 
-    public void SpawnTrain(int x, int y)
+    public void SpawnTrain(Transform spawnpoint)
     {
         var train = MonoBehaviour.Instantiate<GameObject>(TrainPrefab);
         train.transform.SetParent(TrainParent.transform);
-        _trains.Add(train.GetComponent<Train>());
+        train.transform.position = spawnpoint.position;
+        train.transform.rotation = spawnpoint.rotation;
+        var trainBehaviour = train.GetComponent<Train>();
+        _trains.Add(trainBehaviour);
     }
 }

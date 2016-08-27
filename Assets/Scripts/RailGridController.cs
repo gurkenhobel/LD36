@@ -11,7 +11,7 @@ public class RailGridController : MonoBehaviour
 
     public TextAsset testLevel;
 
-    private Rail[,] railGrid;
+    public Rail[,] railGrid;
 
 
     private void Start()
