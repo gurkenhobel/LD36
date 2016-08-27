@@ -22,7 +22,7 @@ GameObject:
   - 198: {fileID: 198000013960748820}
   - 199: {fileID: 199000012753056722}
   m_Layer: 0
-  m_Name: Explosion (1)
+  m_Name: Explosion Train Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
