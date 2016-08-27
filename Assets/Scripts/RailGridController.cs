@@ -102,10 +102,10 @@ public class Rail
         return position;
     }
 
-    public List<Vector3> GetWaypoints()
+    public List<Waypoint> GetWaypoints()
     {
-        var waypointTransforms = cellObject.GetComponents<Transform>();
-        return waypointTransforms.Select(waypoint => waypoint.position).ToList();
+        var waypoints = cellObject.GetComponents<Waypoint>();
+        return waypoints.ToList();
     }
 }
 
@@ -122,4 +122,9 @@ public class SwitchRail : Rail
     }
 }
 
+public class Waypoint : MonoBehaviour
+{
+    public Waypoint AdjecentWaypoint1;
+    public Waypoint AdjecentWaypoint2;
 
+}
