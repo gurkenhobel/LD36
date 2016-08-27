@@ -77,11 +77,17 @@ public class RailGridController : MonoBehaviour
             case 'l':
                 return new SwitchRail(transform, curveSE, pos);
             case 'r':
-                return new SwitchRail(transform, curveSW, pos);
+                return new SwitchRail(transform, curveNE, pos);
             case 'o':
                 return null;
             default:
                 throw new InvalidEnumArgumentException();
         }
     }
+}
+
+public class Waypoint : MonoBehaviour
+{
+    public Waypoint AdjecentWaypoint1;
+    public Waypoint AdjecentWaypoint2;
 }
