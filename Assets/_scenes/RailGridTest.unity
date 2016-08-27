@@ -99,7 +99,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 46377184}
   - 114: {fileID: 46377183}
-  - 114: {fileID: 46377185}
   m_Layer: 0
   m_Name: RailGrid
   m_TagString: Untagged
@@ -120,8 +119,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 20
   height: 10
-  railPrefab: {fileID: 100000, guid: f0b17556288a18f42bb88f82f299ea20, type: 3}
-  switchPrefab: {fileID: 0}
+  straightRail: {fileID: 1000012656756848, guid: 463e5fa25ec32c14eb02915162725f80,
+    type: 2}
+  curveLeft: {fileID: 1000010619155886, guid: c7f39348a33575844a132aaee8a28a0f, type: 2}
+  curveRight: {fileID: 1000012490817470, guid: 276c6185a4cd5ea43a0fe30fb99268fc, type: 2}
+  testLevel: {fileID: 4900000, guid: 221b8f3bd9a820b46afb0d1d65a370f2, type: 3}
 --- !u!4 &46377184
 Transform:
   m_ObjectHideFlags: 0
@@ -135,18 +137,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!114 &46377185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 46377182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36aa8024a6160d74783b62d43b1d4510, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  test: {fileID: 4900000, guid: 221b8f3bd9a820b46afb0d1d65a370f2, type: 3}
 --- !u!1 &1489698768
 GameObject:
   m_ObjectHideFlags: 0

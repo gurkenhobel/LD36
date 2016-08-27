@@ -1,13 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class RailGridController : MonoBehaviour
 {
     public int width = 20;
     public int height = 10;
+    public int cellSize = 10;
 
-    public GameObject railPrefab;
-    public GameObject switchPrefab;
+    public GameObject straightRail;
+    public GameObject curveLeft;
+    public GameObject curveRight;
 
     public TextAsset testLevel;
 
@@ -16,29 +21,52 @@ public class RailGridController : MonoBehaviour
 
     private void Start()
     {
-        railGrid = LevelImporter.GetRailGridFromFile(testLevel);
-        CreateRailGrid();
+        GetRailGridFromFile(testLevel);
     }
 
-    public void CreateRailGrid()
+    private void GetRailGridFromFile(TextAsset level)
     {
-        railGrid = new Rail[height, width];
+        string[] lines = SplitOnNewline(level.text);
+        int gridHeight = lines.Length;
+        int gridWidth = lines[0].Length;
+        railGrid = new Rail[gridHeight, gridWidth];
 
-        for (int z = 0; z < height; z++)
+        for (int y = 0; y < gridHeight; y++)
         {
-            for (int x = 0; x < width; x++)
+            string line = lines[y];
+            Debug.Log(line);
+
+            for (int x = 0; x < gridWidth; x++)
             {
-                Vector2 pos = new Vector2(x, z);
-                railGrid[z, x] = new Rail(railPrefab, pos);
+                Vector2 pos = new Vector2(x * cellSize, y * cellSize);
+                char railChar = line[x];
+                Debug.Log(railChar);
+                Rail rail = GetRail(railChar, pos);
+                railGrid[y, x] = rail;
             }
         }
     }
 
-    private void PlaceRailObject(GameObject prefab, int x, int z)
+    private static string[] SplitOnNewline(string str)
     {
-        Vector3 pos = new Vector3(x, 0, z);
-        GameObject railObject = Instantiate(railPrefab, pos, Quaternion.identity) as GameObject;
-        railObject.transform.SetParent(transform);
+        return str.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+    }
+
+    private Rail GetRail(char rail, Vector2 pos)
+    {
+        switch (rail)
+        {
+            case '-':
+                return new Rail(transform, straightRail, pos);
+            case '|':
+                return new Rail(transform, straightRail, pos);
+            case 'l':
+                return new SwitchRail(transform, curveLeft, pos);
+            case 'r':
+                return new SwitchRail(transform, curveRight, pos);
+            default:
+                throw new InvalidEnumArgumentException();
+        }
     }
 }
 
@@ -56,10 +84,11 @@ public class Rail
     protected RailDirection direction;
     protected GameObject cellObject;
 
-    public Rail(GameObject prefab, Vector2 pos)
+    public Rail(Transform parent, GameObject prefab, Vector2 pos)
     {
-        Vector3 cellPos = new Vector3(pos.x, pos.y);
-        cellObject = Object.Instantiate(prefab, cellPos, Quaternion.identity) as GameObject;
+        position = new Vector3(pos.x, 0, pos.y);
+        cellObject = Object.Instantiate(prefab, position, Quaternion.identity) as GameObject;
+        cellObject.transform.SetParent(parent);
     }
 
     public Vector2 GetPosition()
@@ -77,7 +106,7 @@ public class Rail
 
 public class SwitchRail : Rail
 {
-    public SwitchRail(GameObject prefab, Vector2 pos) : base(prefab, pos)
+    public SwitchRail(Transform parent, GameObject prefab, Vector2 pos) : base(parent, prefab, pos)
     {
 
     }
