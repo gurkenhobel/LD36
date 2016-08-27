@@ -13,12 +13,13 @@ public class GameController : MonoBehaviour
     {
         #region init
         _trainController = new TrainController();
+        _railGrid = GetComponent<RailGrid>();
         #endregion
-        
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 	
 	}
 }
