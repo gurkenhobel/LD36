@@ -165,6 +165,7 @@ GameObject:
   - 92: {fileID: 1246691686}
   - 124: {fileID: 1246691685}
   - 81: {fileID: 1246691684}
+  - 114: {fileID: 1246691689}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -233,10 +234,84 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1246691683}
+  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &1246691689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1246691683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6603b0afbf4ed94393168f95f1077a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
+--- !u!1 &1259500479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1259500481}
+  - 114: {fileID: 1259500480}
+  - 114: {fileID: 1259500482}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1259500480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1259500479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd0e7c3788dd6c40a1791a960b758a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1259500481
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1259500479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
+--- !u!114 &1259500482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1259500479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ae99fe53e2f2a44a6dfab992e4adf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 20
+  height: 10
+  cellSize: 1
+  straightNS: {fileID: 1000011485491762, guid: 02e31994789e73a4bbde9cb8e3d01319, type: 2}
+  straightOW: {fileID: 1000012641307506, guid: 323a71e7a9fbac448b5c3165aefabaab, type: 2}
+  curveNE: {fileID: 1000010619155886, guid: c7f39348a33575844a132aaee8a28a0f, type: 2}
+  curveNW: {fileID: 1000012490817470, guid: 276c6185a4cd5ea43a0fe30fb99268fc, type: 2}
+  curveSE: {fileID: 1000011886769044, guid: 5a2fea9e5404d46408062061aef66133, type: 2}
+  curveSW: {fileID: 1000014014854684, guid: f1647decab204f140886d7f1170cce21, type: 2}
+  testLevel: {fileID: 4900000, guid: 221b8f3bd9a820b46afb0d1d65a370f2, type: 3}

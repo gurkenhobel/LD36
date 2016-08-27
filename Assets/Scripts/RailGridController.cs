@@ -6,7 +6,7 @@ public class RailGridController : MonoBehaviour
 {
     public int width = 20;
     public int height = 10;
-    public int cellSize = 10;
+    public int cellSize = 1;
 
     public GameObject straightNS;
     public GameObject straightOW;
