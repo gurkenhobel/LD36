@@ -19,13 +19,15 @@ public class CameraController : MonoBehaviour {
 	private bool _bDragging = false;
 	Vector3 _oldPos;
 	Vector3 _panOrigin;
-	private float _panSpeed = 15f;
 
+	private float _panSpeed = 20f;
 
+	private Vector3 ResetCamera;
 	// Use this for initialization
 	void Start ()
 	{
 		_camera = GetComponent<Camera> ();
+		ResetCamera = _camera.transform.position;
 	}
 
 	// Update is called once per frame
@@ -89,7 +91,10 @@ public class CameraController : MonoBehaviour {
 
 	void LateUpdate()
 	{
-
+		if (Input.GetMouseButtonDown (1)) 
+		{
+			Camera.main.transform.position = ResetCamera;
+		}
 	}
 
 }
