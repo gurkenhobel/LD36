@@ -16,13 +16,18 @@ public class CameraController : MonoBehaviour {
 
 
 
+	private bool _bDragging = false;
+	Vector3 _oldPos;
+	Vector3 _panOrigin;
+	private float _panSpeed = 15f;
+
 
 	// Use this for initialization
 	void Start ()
 	{
 		_camera = GetComponent<Camera> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -42,12 +47,37 @@ public class CameraController : MonoBehaviour {
 		{
 			transform.Translate (new Vector3 (0, _speed * Time.deltaTime, 0));
 		}
-	
+
 		_fieldOfView = Camera.main.fieldOfView;
 
 		_fieldOfView -= Input.GetAxis ("Mouse ScrollWheel") * _sensitivity;
 		_fieldOfView = Mathf.Clamp (_fieldOfView, _minFieldOfView, _maxFieldOfView);
 		Camera.main.fieldOfView = _fieldOfView;
+
+
+		if (Input.GetMouseButtonDown (0)) 
+		{
+			_bDragging = true;
+			_oldPos = transform.position;
+
+			//get the ScreenVector (Vector3D, Mouse clicked)
+			_panOrigin = Camera.main.ScreenToViewportPoint (Input.mousePosition);
+		}
+
+		if (Input.GetMouseButton (0)) 
+		{
+			Vector3 pos = Camera.main.ScreenToViewportPoint (Input.mousePosition) - _panOrigin;
+
+			transform.position = _oldPos + -pos * _panSpeed;
+		}
+
+		if (Input.GetMouseButtonUp (0)) 
+		{
+			_bDragging = false;
+		}
+
+
+
 
 
 	}
@@ -59,7 +89,7 @@ public class CameraController : MonoBehaviour {
 
 	void LateUpdate()
 	{
-		
+
 	}
 
 }
