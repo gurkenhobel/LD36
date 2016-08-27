@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
 
     private TrainController _trainController;
-    private RailGrid _railGrid;
+    private RailGridController _railGrid;
 	
 	void Start ()
     {
