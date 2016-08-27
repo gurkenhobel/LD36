@@ -17,6 +17,7 @@ public class Trailer : MonoBehaviour
 
 	void Start ()
     {
+        transform.position = StartWaypoint.transform.position;
         _lastWaypointTime = Time.time;
         _currentWaypoint = StartWaypoint;
         _nextWaypoint = _currentWaypoint.AdjecentWaypoint1??_currentWaypoint.AdjecentWaypoint2;

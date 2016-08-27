@@ -23,12 +23,16 @@ public class RailGridController : MonoBehaviour
 
     public Rail[,] railGrid;
 
+    public Waypoint SpawnPoint;
+
     private List<Waypoint> _waypoints;
 
 
     private void Start()
     {
+        _waypoints = new List<Waypoint>();
         GetRailGridFromFile(testLevel);
+        SpawnPoint = _waypoints[UnityEngine.Random.Range(0, _waypoints.Count)];
     }
 
     private void GetRailGridFromFile(TextAsset level)
@@ -66,16 +70,9 @@ public class RailGridController : MonoBehaviour
 
                 foreach (var le in looseEnds)
                 {
-                    if (!le.IsSwitchRail)
-                    {
                         // finds the waypoint with the lowest distance to le
                         le.AdjecentWaypoint1 = le.AdjecentWaypoint1 ??  _waypoints.OrderBy(w => Vector3.Distance(w.transform.position, le.transform.position)).ToArray()[0];
                         le.AdjecentWaypoint2 = le.AdjecentWaypoint2 ?? _waypoints.OrderBy(w => Vector3.Distance(w.transform.position, le.transform.position)).ToArray()[0];
-                    }
-                    else
-                    {
-
-                    }
                 }
 
             }
@@ -101,17 +98,17 @@ public class RailGridController : MonoBehaviour
         switch (rail)
         {
             case '-':
-                return new Rail(transform, straightNS, pos);
+                return ((GameObject) Instantiate( straightNS,pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case '|':
-                return new Rail(transform, straightOW, pos);
+                return ((GameObject)Instantiate(straightOW, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case 't':
-                return new SwitchRail(transform, curveNE, pos);
+                return ((GameObject)Instantiate(curveNE, pos, Quaternion.identity, transform)).GetComponent<Rail>(); 
             case 'b':
-                return new SwitchRail(transform, curveNW, pos);
+                return ((GameObject)Instantiate(curveNW, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case 'l':
-                return new SwitchRail(transform, curveSE, pos);
+                return ((GameObject)Instantiate(curveSE, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case 'r':
-                return new SwitchRail(transform, curveNE, pos);
+                return ((GameObject)Instantiate(curveNE, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case 'o':
                 return null;
             default:
@@ -120,12 +117,4 @@ public class RailGridController : MonoBehaviour
     }
 }
 
-public class Waypoint : MonoBehaviour
-{
-    public bool IsSwitchRail;
 
-    public Waypoint AdjecentWaypoint1;
-
-    public Waypoint AdjecentWaypoint2;
-    
-}

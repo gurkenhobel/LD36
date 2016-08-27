@@ -1,25 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Rail
+public class Rail : MonoBehaviour
 {
     protected Vector3 position;
     protected RailDirection direction;
     private readonly GameObject cellObject;
 
-    protected enum RailDirection
+     public enum RailDirection
     {
-        Left,
-        Right,
-        Top,
-        Bottow
+        Left = 1,
+        Right = 2,
+        Top = 4,
+        Bottow = 8
     }
 
     public Rail(Transform parent, GameObject prefab, Vector2 pos)
     {
         position = new Vector3(pos.x, 0, pos.y);
-        cellObject = Object.Instantiate(prefab, position, Quaternion.identity) as GameObject;
+        cellObject = UnityEngine.Object.Instantiate(prefab, position, Quaternion.identity) as GameObject;
         cellObject.transform.SetParent(parent);
     }
 
@@ -30,20 +31,8 @@ public class Rail
 
     public List<Waypoint> GetWaypoints()
     {
-        var waypoints = cellObject.GetComponents<Waypoint>();
+        var waypoints = gameObject.GetComponents<Waypoint>();
         return waypoints.ToList();
     }
 }
 
-public class SwitchRail : Rail
-{
-    public SwitchRail(Transform parent, GameObject prefab, Vector2 pos) : base(parent, prefab, pos)
-    {
-
-    }
-
-    public void RotateSwitch()
-    {
-        direction += 1 % 4;
-    }
-}
