@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
 
 public class RailGridController : MonoBehaviour
 {
@@ -20,6 +22,8 @@ public class RailGridController : MonoBehaviour
     public TextAsset testLevel;
 
     public Rail[,] railGrid;
+
+    private List<Waypoint> _waypoints;
 
 
     private void Start()
@@ -44,6 +48,36 @@ public class RailGridController : MonoBehaviour
                 char railChar = line[x];
                 Rail rail = GetRail(railChar, pos);
                 railGrid[y, x] = rail;
+                _waypoints.AddRange(rail.GetWaypoints());
+            }
+        }
+
+        
+    }
+
+    private void WeldRailParts()
+    {
+        for (int y = 0; y < railGrid.GetLength(0); y++)
+        {
+            for (int x = 0; x < railGrid.GetLength(1); x++)
+            {
+                var wpts = railGrid[y, x].GetWaypoints();
+                var looseEnds = wpts.Where(wp => wp.AdjecentWaypoint1 == null || wp.AdjecentWaypoint2 == null);
+
+                foreach (var le in looseEnds)
+                {
+                    if (!le.IsSwitchRail)
+                    {
+                        // finds the waypoint with the lowest distance to le
+                        le.AdjecentWaypoint1 = le.AdjecentWaypoint1 ??  _waypoints.OrderBy(w => Vector3.Distance(w.transform.position, le.transform.position)).ToArray()[0];
+                        le.AdjecentWaypoint2 = le.AdjecentWaypoint2 ?? _waypoints.OrderBy(w => Vector3.Distance(w.transform.position, le.transform.position)).ToArray()[0];
+                    }
+                    else
+                    {
+
+                    }
+                }
+
             }
         }
     }
@@ -88,6 +122,10 @@ public class RailGridController : MonoBehaviour
 
 public class Waypoint : MonoBehaviour
 {
+    public bool IsSwitchRail;
+
     public Waypoint AdjecentWaypoint1;
+
     public Waypoint AdjecentWaypoint2;
+    
 }
