@@ -12,8 +12,12 @@ public class RailGridController : MonoBehaviour
 
     public GameObject straightNS;
     public GameObject straightOW;
-    public GameObject curveLeft;
-    public GameObject curveRight;
+
+    public GameObject curveNE;
+    public GameObject curveNW;
+    public GameObject curveSE;
+    public GameObject curveSW;
+
 
     public TextAsset testLevel;
 
@@ -35,7 +39,6 @@ public class RailGridController : MonoBehaviour
         for (int y = 0; y < gridHeight; y++)
         {
             string line = lines[y];
-            Debug.Log(line);
 
             for (int x = 0; x < gridWidth; x++)
             {
@@ -60,10 +63,10 @@ public class RailGridController : MonoBehaviour
                 return new Rail(transform, straightNS, pos);
             case '|':
                 return new Rail(transform, straightOW, pos);
-            case 'l':
-                return new SwitchRail(transform, curveLeft, pos);
+            case 't':
+                return new SwitchRail(transform, curveNE, pos);
             case 'r':
-                return new SwitchRail(transform, curveRight, pos);
+                return new SwitchRail(transform, curveNE, pos);
             case 'o':
                 return null;
             default:
@@ -84,7 +87,7 @@ public class Rail
 {
     protected Vector3 position;
     protected RailDirection direction;
-    protected GameObject cellObject;
+    private readonly GameObject cellObject;
 
     public Rail(Transform parent, GameObject prefab, Vector2 pos)
     {
