@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class TrainController
 {
     #region prefabs
-    public Train TrainPrefab;
+    public GameObject TrainPrefab;
     #endregion
 
     public GameObject TrainParent;
@@ -19,8 +19,8 @@ public class TrainController
 
     public void SpawnTrain(int x, int y)
     {
-        var train = MonoBehaviour.Instantiate<Train>(TrainPrefab);
+        var train = MonoBehaviour.Instantiate<GameObject>(TrainPrefab);
         train.transform.SetParent(TrainParent.transform);
-        _trains.Add(train);
+        _trains.Add(train.GetComponent<Train>());
     }
 }
