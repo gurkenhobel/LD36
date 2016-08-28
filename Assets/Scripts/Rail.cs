@@ -31,7 +31,7 @@ public class Rail : MonoBehaviour
 
     public List<Waypoint> GetWaypoints()
     {
-        var waypoints = gameObject.GetComponents<Waypoint>();
+        var waypoints = gameObject.GetComponentsInChildren<Waypoint>();
         return waypoints.ToList();
     }
 }

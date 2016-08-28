@@ -32,7 +32,8 @@ public class RailGridController : MonoBehaviour
     {
         _waypoints = new List<Waypoint>();
         GetRailGridFromFile(testLevel);
-        SpawnPoint = _waypoints[UnityEngine.Random.Range(0, _waypoints.Count)];
+        print(_waypoints.Count);
+        SpawnPoint = _waypoints[0];
     }
 
     private void GetRailGridFromFile(TextAsset level)
@@ -67,16 +68,18 @@ public class RailGridController : MonoBehaviour
         {
             for (int x = 0; x < railGrid.GetLength(1); x++)
             {
-                var wpts = railGrid[y, x].GetWaypoints();
-                var looseEnds = wpts.Where(wp => wp.AdjecentWaypoint1 == null || wp.AdjecentWaypoint2 == null);
-
-                foreach (var le in looseEnds)
+                if (railGrid[y, x] != null)
                 {
-                        // finds the waypoint with the lowest distance to le
-                        le.AdjecentWaypoint1 = le.AdjecentWaypoint1 ??  _waypoints.OrderBy(w => Vector3.Distance(w.transform.position, le.transform.position)).ToArray()[0];
-                        le.AdjecentWaypoint2 = le.AdjecentWaypoint2 ?? _waypoints.OrderBy(w => Vector3.Distance(w.transform.position, le.transform.position)).ToArray()[0];
-                }
+                    var wpts = railGrid[y, x].GetWaypoints();
+                    var looseEnds = wpts.Where(wp => wp.AdjecentWaypoint1 == null || wp.AdjecentWaypoint2 == null);
 
+                    foreach (var le in looseEnds)
+                    {
+                        // finds the waypoint with the lowest distance to le
+                        le.AdjecentWaypoint1 = le.AdjecentWaypoint1 ?? _waypoints.OrderBy(w => Vector3.Distance(w.transform.position, le.transform.position)).ToArray()[0];
+                        le.AdjecentWaypoint2 = le.AdjecentWaypoint2 ?? _waypoints.OrderBy(w => Vector3.Distance(w.transform.position, le.transform.position)).ToArray()[0];
+                    }
+                }
             }
         }
     }
