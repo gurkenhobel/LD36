@@ -192,8 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15ea0cbe41f5684dbacc5318c9a9fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AdjecentWaypoint1: {fileID: 0}
-  AdjecentWaypoint2: {fileID: 114000014118732330}
+  AdjecentWaypoints:
+  - {fileID: 114000014118732330}
 --- !u!114 &114000012349370368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,8 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15ea0cbe41f5684dbacc5318c9a9fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AdjecentWaypoint1: {fileID: 0}
-  AdjecentWaypoint2: {fileID: 114000014118732330}
+  AdjecentWaypoints:
+  - {fileID: 114000014118732330}
 --- !u!114 &114000013385052746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,5 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15ea0cbe41f5684dbacc5318c9a9fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AdjecentWaypoint1: {fileID: 114000011654917188}
-  AdjecentWaypoint2: {fileID: 114000012349370368}
+  AdjecentWaypoints:
+  - {fileID: 114000011654917188}
+  - {fileID: 114000012349370368}

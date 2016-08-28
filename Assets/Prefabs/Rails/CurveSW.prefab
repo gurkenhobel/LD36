@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011975919816}
+  - 114: {fileID: 114000014199829536}
   m_Layer: 0
   m_Name: Waypoint3
   m_TagString: Untagged
@@ -34,6 +35,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013041346564}
+  - 114: {fileID: 114000012115221268}
   m_Layer: 0
   m_Name: Waypoint1
   m_TagString: Untagged
@@ -49,6 +51,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012433954070}
+  - 114: {fileID: 114000011501841722}
   m_Layer: 0
   m_Name: Waypoint2
   m_TagString: Untagged
@@ -196,6 +199,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000011501841722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013441805752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15ea0cbe41f5684dbacc5318c9a9fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AdjecentWaypoints:
+  - {fileID: 114000012115221268}
+  - {fileID: 114000014199829536}
 --- !u!114 &114000011872600146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,3 +224,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7113212ffe2bfd4a80431a0c8dc9400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000012115221268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011374657768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15ea0cbe41f5684dbacc5318c9a9fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AdjecentWaypoints:
+  - {fileID: 114000011501841722}
+--- !u!114 &114000014199829536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010179104402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15ea0cbe41f5684dbacc5318c9a9fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AdjecentWaypoints:
+  - {fileID: 114000011501841722}

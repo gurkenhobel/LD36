@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class RailGridController : MonoBehaviour
 {
+
+
     public int width = 20;
     public int height = 10;
     public int cellSize = 1;
@@ -28,7 +30,7 @@ public class RailGridController : MonoBehaviour
     private List<Waypoint> _waypoints;
 
 
-    private void Start()
+    private void Awake()
     {
         _waypoints = new List<Waypoint>();
         GetRailGridFromFile(testLevel);
@@ -49,11 +51,11 @@ public class RailGridController : MonoBehaviour
 
             for (int x = 0; x < gridWidth; x++)
             {
-                Vector3 pos = new Vector3(x * cellSize,0, y * cellSize);
+                Vector3 pos = new Vector3(x * cellSize, 0, y * cellSize);
                 char railChar = line[x];
                 Rail rail = GetRail(railChar, pos);
                 railGrid[y, x] = rail;
-                if(rail != null)
+                if (rail != null)
                     _waypoints.AddRange(rail.GetWaypoints());
             }
         }
@@ -64,6 +66,7 @@ public class RailGridController : MonoBehaviour
 
     private void WeldRailParts()
     {
+        List<Waypoint> allLooseEnds = _waypoints.Where(wp => wp.AdjecentWaypoints.Count < 2).ToList();
         for (int y = 0; y < railGrid.GetLength(0); y++)
         {
             for (int x = 0; x < railGrid.GetLength(1); x++)
@@ -71,13 +74,21 @@ public class RailGridController : MonoBehaviour
                 if (railGrid[y, x] != null)
                 {
                     var wpts = railGrid[y, x].GetWaypoints();
-                    var looseEnds = wpts.Where(wp => wp.AdjecentWaypoint1 == null || wp.AdjecentWaypoint2 == null);
+                    List<Waypoint> looseEnds = wpts.Where(wp => wp.AdjecentWaypoints.Count < 2).ToList();
+
+
 
                     foreach (var le in looseEnds)
                     {
                         // finds the waypoint with the lowest distance to le
-                        le.AdjecentWaypoint1 = le.AdjecentWaypoint1 ?? _waypoints.OrderBy(w => Vector3.Distance(w.transform.position, le.transform.position)).ToArray()[0];
-                        le.AdjecentWaypoint2 = le.AdjecentWaypoint2 ?? _waypoints.OrderBy(w => Vector3.Distance(w.transform.position, le.transform.position)).ToArray()[0];
+                        var wPTemp = allLooseEnds;
+                        var rail = le.GetComponentInParent<Rail>();
+                        var wpInRail = rail.GetWaypoints();
+                        wPTemp.RemoveAll(e => wpInRail.Contains(e));
+
+                        var newWp = wPTemp.OrderBy(w => Vector3.Distance(w.transform.position, le.transform.position)).ToArray()[0];
+                        le.AdjecentWaypoints.Add(newWp);
+                        newWp.AdjecentWaypoints.Add(le);
                     }
                 }
             }
@@ -104,11 +115,11 @@ public class RailGridController : MonoBehaviour
         switch (rail)
         {
             case '-':
-                return ((GameObject) Instantiate( straightNS, pos, Quaternion.identity, transform)).GetComponent<Rail>();
+                return ((GameObject)Instantiate(straightNS, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case '|':
                 return ((GameObject)Instantiate(straightOW, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case 't':
-                return ((GameObject)Instantiate(curveSW, pos, Quaternion.identity, transform)).GetComponent<Rail>(); 
+                return ((GameObject)Instantiate(curveSW, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case 'b':
                 return ((GameObject)Instantiate(curveNW, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case 'l':

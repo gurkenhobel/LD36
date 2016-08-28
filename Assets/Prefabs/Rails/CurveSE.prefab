@@ -39,6 +39,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013144785258}
+  - 114: {fileID: 114000010373784726}
   m_Layer: 0
   m_Name: Waypoint2
   m_TagString: Untagged
@@ -54,6 +55,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010943270846}
+  - 114: {fileID: 114000011108853040}
   m_Layer: 0
   m_Name: Waypoint1
   m_TagString: Untagged
@@ -69,6 +71,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013563620980}
+  - 114: {fileID: 114000011431378130}
   m_Layer: 0
   m_Name: Waypoint3
   m_TagString: Untagged
@@ -196,6 +199,45 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010373784726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012292850384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15ea0cbe41f5684dbacc5318c9a9fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AdjecentWaypoints:
+  - {fileID: 114000011108853040}
+  - {fileID: 114000011431378130}
+--- !u!114 &114000011108853040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013498594922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15ea0cbe41f5684dbacc5318c9a9fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AdjecentWaypoints:
+  - {fileID: 114000010373784726}
+--- !u!114 &114000011431378130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013658665646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15ea0cbe41f5684dbacc5318c9a9fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AdjecentWaypoints: []
 --- !u!114 &114000013107062862
 MonoBehaviour:
   m_ObjectHideFlags: 1

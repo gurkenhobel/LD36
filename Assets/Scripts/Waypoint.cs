@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Waypoint : MonoBehaviour
 {
-    public Waypoint AdjecentWaypoint1;
-
-    public Waypoint AdjecentWaypoint2;
+    public List<Waypoint> AdjecentWaypoints;
 
 }
