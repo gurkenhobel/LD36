@@ -399,6 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd0e7c3788dd6c40a1791a960b758a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trainSpawner: {fileID: 1538057201}
 --- !u!4 &1259500481
 Transform:
   m_ObjectHideFlags: 0
@@ -444,3 +445,9 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000012887230140, guid: 6a0f62178d3f3d342bc888ac73499484,
     type: 2}
   m_PrefabInternal: {fileID: 471554844}
+--- !u!114 &1538057201 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011748564448, guid: 6a0f62178d3f3d342bc888ac73499484,
+    type: 2}
+  m_PrefabInternal: {fileID: 471554844}
+  m_Script: {fileID: 11500000, guid: 76937866b07418444a9c8ba950f737b6, type: 3}
