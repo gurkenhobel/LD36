@@ -124,7 +124,7 @@ public class RailGridController : MonoBehaviour
                 return ((GameObject)Instantiate(curveNE, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case 's':
                 // TODO lagerhallen model
-                Rail spawnRail = (Rail)Instantiate(straightNS, pos, Quaternion.identity, transform);
+                Rail spawnRail = ((GameObject)Instantiate(straightNS, pos, Quaternion.identity, transform)).GetComponent<Rail>();
                 spawnWaypoint = spawnRail.GetWaypoints()[0];
                 return spawnRail;
             case 'x':
