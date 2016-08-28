@@ -237,7 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15ea0cbe41f5684dbacc5318c9a9fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AdjecentWaypoints: []
+  AdjecentWaypoints:
+  - {fileID: 114000010373784726}
 --- !u!114 &114000013107062862
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -141,6 +141,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &580884782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 580884783}
+  m_Layer: 0
+  m_Name: TrainSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &580884783
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 580884782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.7325534, y: 0.4047351, z: 2.0304737}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+--- !u!114 &1470135916 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000012360298964, guid: 8acadb98463ad944bb641e1a5f7705e6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1529957345}
+  m_Script: {fileID: 11500000, guid: 4453de427a0f6aa4b856e2b752bf6070, type: 3}
 --- !u!1 &1489698768
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +232,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1489698768}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -4.263, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
   m_Children: []
@@ -246,7 +280,7 @@ Prefab:
     - target: {fileID: 114000012360298964, guid: 8acadb98463ad944bb641e1a5f7705e6,
         type: 2}
       propertyPath: Length
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000013636678602, guid: 8acadb98463ad944bb641e1a5f7705e6,
         type: 2}
@@ -255,8 +289,18 @@ Prefab:
       objectReference: {fileID: 46377183}
     - target: {fileID: 1000014248436294, guid: 8acadb98463ad944bb641e1a5f7705e6, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012360298964, guid: 8acadb98463ad944bb641e1a5f7705e6,
+        type: 2}
+      propertyPath: Grid
+      value: 
+      objectReference: {fileID: 46377183}
+    - target: {fileID: 114000013636678602, guid: 8acadb98463ad944bb641e1a5f7705e6,
+        type: 2}
+      propertyPath: Train
+      value: 
+      objectReference: {fileID: 1470135916}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8acadb98463ad944bb641e1a5f7705e6, type: 2}
   m_IsPrefabParent: 0
