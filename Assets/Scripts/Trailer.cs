@@ -21,7 +21,7 @@ public class Trailer : MonoBehaviour
     {
     }
 
-    public void Init(Waypoint spawnWaypoint)
+    public void Init(Waypoint spawnWaypoint, Waypoint dir)
     {
         _speed = 2;
         Grid = Train.Grid;
@@ -29,7 +29,7 @@ public class Trailer : MonoBehaviour
         StartWaypoint = spawnWaypoint;
         _lastWaypointTime = Time.time;
         _currentWaypoint = StartWaypoint;
-        _nextWaypoint = StartWaypoint.AdjecentWaypoints[0];
+        _nextWaypoint = dir;
     }
 
     private void CalculatePosition()
