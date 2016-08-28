@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Linq;
+﻿using System.Linq;
+using UnityEngine;
 
 public class Trailer : MonoBehaviour
 {
@@ -17,9 +16,6 @@ public class Trailer : MonoBehaviour
 
     float _lastWaypointTime;
 
-	void Start ()
-    {
-    }
 
     public void Init(Waypoint spawnWaypoint, Waypoint dir)
     {
@@ -34,11 +30,11 @@ public class Trailer : MonoBehaviour
 
     private void CalculatePosition()
     {
-        Vector3 newPos = Vector3.Lerp(_currentWaypoint.transform.position, _nextWaypoint.transform.position, (Time.time - _lastWaypointTime) * _speed);
-        transform.position = newPos;
         transform.rotation = Quaternion.LookRotation(_nextWaypoint.transform.position - _currentWaypoint.transform.position, Vector3.up);
+        Vector3 newPos = transform.position + transform.forward * Time.deltaTime * _speed;
+        transform.position = newPos;
 
-        if(Vector3.Distance(transform.position, _nextWaypoint.transform.position) < 0.01)
+        if (Vector3.Distance(transform.position, _nextWaypoint.transform.position) < 0.01)
         {
             _lastWaypointTime = Time.time;
             var twp = _nextWaypoint;
@@ -52,9 +48,9 @@ public class Trailer : MonoBehaviour
 
         return _nextWaypoint.AdjecentWaypoints.Single(w => w != _currentWaypoint);
     }
-	
-	void Update ()
+
+    void Update()
     {
         CalculatePosition();
-	}
+    }
 }

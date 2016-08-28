@@ -1,15 +1,11 @@
 ﻿using System;
-using System.ComponentModel;
-using UnityEngine;
-using System.Linq;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using UnityEngine;
 
 public class RailGridController : MonoBehaviour
 {
-
-
-    public int width = 20;
-    public int height = 10;
     public int cellSize = 1;
 
     public GameObject straightNS;
@@ -20,14 +16,14 @@ public class RailGridController : MonoBehaviour
     public GameObject curveSE;
     public GameObject curveSW;
 
+    public GameObject spawnTrack;
 
     public TextAsset testLevel;
-
     public Rail[,] railGrid;
-
     public Waypoint SpawnPoint;
 
     private List<Waypoint> _waypoints;
+    private Waypoint spawnWaypoint;
 
 
     private void Awake()
@@ -36,6 +32,8 @@ public class RailGridController : MonoBehaviour
         GetRailGridFromFile(testLevel);
         print(_waypoints.Count);
         SpawnPoint = _waypoints[0];
+        TrainSpawner trainSpawner = spawnTrack.GetComponent<TrainSpawner>();
+        trainSpawner.Spawnpoints[0].AdjecentWaypoints[0] = spawnWaypoint;
     }
 
     private void GetRailGridFromFile(TextAsset level)
@@ -60,8 +58,6 @@ public class RailGridController : MonoBehaviour
             }
         }
         WeldRailParts();
-
-
     }
 
     private void WeldRailParts()
@@ -75,7 +71,6 @@ public class RailGridController : MonoBehaviour
                 {
                     var wpts = railGrid[y, x].GetWaypoints();
                     List<Waypoint> looseEnds = wpts.Where(wp => wp.AdjecentWaypoints.Count < 2).ToList();
-
 
 
                     foreach (var le in looseEnds)
@@ -110,6 +105,7 @@ public class RailGridController : MonoBehaviour
          * - = vertical
          * | = horizontal
          * x = free cell
+         * s = spawnPoint
          */
 
         switch (rail)
@@ -126,6 +122,11 @@ public class RailGridController : MonoBehaviour
                 return ((GameObject)Instantiate(curveSE, pos, Quaternion.identity, transform)).GetComponent<Rail>();
             case 'r':
                 return ((GameObject)Instantiate(curveNE, pos, Quaternion.identity, transform)).GetComponent<Rail>();
+            case 's':
+                // TODO lagerhallen model
+                Rail spawnRail = (Rail)Instantiate(straightNS, pos, Quaternion.identity, transform);
+                spawnWaypoint = spawnRail.GetWaypoints()[0];
+                return spawnRail;
             case 'x':
                 return null;
             default:

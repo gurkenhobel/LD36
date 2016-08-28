@@ -2,9 +2,10 @@
 
 public class GameController : MonoBehaviour
 {
-
     private TrainController _trainController;
     private RailGridController _railGrid;
+    public TrainSpawner _trainSpawner;
+
 
     void Start()
     {
@@ -12,6 +13,8 @@ public class GameController : MonoBehaviour
         _trainController = new TrainController();
         _railGrid = GetComponent<RailGridController>();
         #endregion
+
+        _trainSpawner.SpawnTrain(5);
     }
 
     void Update()

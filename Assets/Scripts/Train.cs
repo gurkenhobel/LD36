@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Train : MonoBehaviour
 {
@@ -8,34 +7,34 @@ public class Train : MonoBehaviour
     public GameObject TrailerPrefab;
     #endregion
     public RailGridController Grid;
-
     public Waypoint StartWaypoint;
-
     public Trailer Lock;
-
     public int Length;
 
-    private List<Trailer> Trailer;
-
+    private List<Trailer> Trailers;
     private const float TRAILER_LENGTH = 0.8f;
 
-	// Use this for initialization
-	void Start ()
+
+    void Start()
     {
         StartWaypoint = Grid.SpawnPoint;
         Lock.Init(StartWaypoint, StartWaypoint.AdjecentWaypoints[0]);
-        Trailer = new List<Trailer>();
+        Trailers = new List<Trailer>();
         //GenerateTrailers(Length);
+    }
 
-	}
-	
     public void AddTrailer(Waypoint spawnpoint, Waypoint dir)
     {
         var trailer1 = Instantiate<GameObject>(TrailerPrefab).GetComponent<Trailer>();
         trailer1.Train = this;
         trailer1.transform.position = spawnpoint.transform.position;
         trailer1.Init(spawnpoint, dir);
-        Trailer.Add(trailer1);
+
+        if (Trailers == null)
+        {
+            Trailers = new List<Trailer>();
+        }
+        Trailers.Add(trailer1);
     }
 
 
@@ -58,9 +57,5 @@ public class Train : MonoBehaviour
     //    }
     //}
 
-	// Update is called once per frame
-	void Update ()
-    {
-	
-	}
+    // Update is called once per frame
 }
